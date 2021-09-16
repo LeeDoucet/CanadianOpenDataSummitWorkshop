@@ -1,0 +1,143 @@
+- - - Pre-Summit Canadian Open Data Educator Workshop - - - 
+
+
+Data on a Dime 
+
+By Lee Doucet of rel8ed.to
+
+
+100% reproducible and no coding required!
+
+
+- - - Files needed - - -
+
+
+Practice -> Table_City | Area Table 
+
+Data from the Toronto Data portal 
+
+> Apartment Building Evaluation | Apartment Building Registration
+
+Data Merged for Evaluation -> Toronto Data
+
+[This data is only if you want to skip Part 2]
+
+
+
+
+- - - Part 1: Getting Data - - - -
+
+
+In your web browser, search for the Toronto Open Data portal 
+
+Click through to the portal and access the search bar 
+
+Type "Apartment Building"
+
+Two data sets: Apartment Building Evaluation | Apartment Building Registration
+
+Download them both
+
+
+
+- - - Part 2: How to Merge Data - - - 
+
+
+Step 1 | Worksheets 
+
+Using your web browser, open up Google Sheets 
+
+File > Import > Open Up Evaluation Apartment Building 
+
+File > Import > Open up Apartment Building Registration (Click "insert new sheet")
+
+[Ensure that both data sets are in the same workbook as separate sheets]
+
+
+Step 2 | Merging Prep
+
+On Apartment Building Registration find the column with RSN. Grab and drag it to the 
+first column
+[Column order should be RSN followed by ID]
+
+Goto the Evaluation Apartment Building sheet and click on column C, down arrow, and 
+then insert 1 left 
+
+
+Step 3 | Formula's 
+
+In the cell C2, paste the below formula 
+
+=VLOOKUP(B2,'Apartment Building Registration Data'!$A$2:$BJ$3481,43,FALSE)
+
+Copy it, then click on the column arrow and goto paste special > special formula only
+
+You can now repeat this process. Create another blank column and paste this formula
+
+=VLOOKUP(B2,'Apartment Building Registration Data'!$A$2:$BJ$3481,46,FALSE)
+
+Change the column heads, PCODE for the 43 and Property Management for 46. 
+
+
+Step 4 | Viola 
+
+Save the data and download it to your computer [File > download]
+
+It's a bit awkward at first but it's fairly easy to reproduce 
+
+Try it on the practice files with Table_City | Area Table 
+
+
+
+- - - - Part 3 Tableau Public - - - 
+
+
+Step 1 | Sign-in and upload data 
+
+Search for Tableau Public - Create an account - it's free and in the cloud
+
+Upload your data 
+
+
+Step 2 | Coordinates 
+
+Drag Longitude into column and change it to Dimension
+
+Drag Latitude to rows and change it to Dimension 
+ 
+ 
+Step 3 | Change Values 
+
+RSN > Change to number and dimension 
+[Strings let you treat numbers like letters]
+Year Evaluated > Change to String / Dimension
+
+We now need to figure out the quality of all these buildings 
+
+Step 4 | Year Evaluated & Results of Score 
+
+You need to put filters on values, click on them and goto filter
+
+Filter Year Evaluated to 2021 only
+Filter Results of Score to Building Audit / 1 Year Building Audit only
+
+
+Step 5 | Score & Colour
+
+Add Score - change it to a dimension 
+[Notice that it's hard to distinguish buildings apart visually]
+
+Drop Results of Score into the color box 
+Click on the color box and click edit color. Change Building Audit to red and 
+Complete Evaluation in 1 year to yellow 
+
+
+Step 6 | Last Details 
+
+Put Site Address, PCODE, and Property Manager
+
+Now you know where all the problematic buildings are in Toronto and all the details
+If you live in one or are concerned, contact your local councillor.
+
+
+
